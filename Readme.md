@@ -97,7 +97,7 @@ If you're running on a laptop, it shows the battery percentage in the status bar
 
 4. **Install JetBrains Mono** (if you don't already have it) from [here](https://www.jetbrains.com/lp/mono/).
 
-5. **Put your custom background images** in `~/exampleconfig/wezterm/images/` (or update the paths in the config if you want them somewhere else).
+5. **Put your custom background images** in `~/wezterm-config/wezterm/images/` (or update the paths in the config if you want them somewhere else).
 
 ---
 
