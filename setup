@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Check if stow is installed
+if ! command -v stow &> /dev/null; then
+    echo "Error: stow is not installed. Please install it and try again."
+    exit 1
+fi
+
+# Use stow to create symlinks for the wezterm configuration
+stow wezterm --target="$HOME"
+
+echo "Setup complete! Symlinks for wezterm configuration and images have been created."
+
