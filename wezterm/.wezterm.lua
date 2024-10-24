@@ -226,7 +226,8 @@ end
 -- Battery status utilities
 local function get_battery_status()
     -- Get battery info from wezterm API
-    local battery = wezterm.battery_info()
+    local success, battery = pcall(wezterm.battery_info)
+	if not success then return nil end
     if not battery then return nil end
     
     local first_battery = battery[1]
