@@ -85,8 +85,8 @@ local function setup_appearance(config)
 	}
 
 	config.window_padding = {
-		left = 0,
-		top = 40,
+		left = 10,
+		top = 10,
 		bottom = 0,
 		right = 0,
 	}
