@@ -85,8 +85,8 @@ local function setup_appearance(config)
 	}
 
 	config.window_padding = {
-		left = 10,
-		top = 10,
+		left = 0,
+		top = 0,
 		bottom = 0,
 		right = 0,
 	}
@@ -109,6 +109,15 @@ local function setup_keybindings(config)
 	}
 
 	local keys = {
+		{
+			key = "t",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(window)
+				local overrides = window:get_config_overrides() or {}
+				overrides.enable_tab_bar = overrides.enable_tab_bar == false
+				window:set_config_overrides(overrides)
+			end),
+		},
 		-- Tab management
 		{ mods = "LEADER", key = "c", action = act.SpawnTab("CurrentPaneDomain") },
 		{ mods = "LEADER", key = "x", action = act.CloseCurrentPane({ confirm = true }) },
