@@ -85,8 +85,8 @@ local function setup_appearance(config)
 	}
 
 	config.window_padding = {
-		left = 0,
-		top = 0,
+		left = 10,
+		top = 10,
 		bottom = 0,
 		right = 0,
 	}
@@ -95,16 +95,16 @@ local function setup_appearance(config)
 	config.hide_tab_bar_if_only_one_tab = false
 	config.tab_bar_at_bottom = true
 	config.use_fancy_tab_bar = false
-	config.tab_and_split_indices_are_zero_based = true
-
+	config.tab_and_split_indices_are_zero_based = false
+	config.warn_about_missing_glyphs = false
 	return config
 end
 
 -- Keybinding configuration
 local function setup_keybindings(config)
 	config.leader = {
-		key = "q",
-		mods = "ALT",
+		key = "Return",
+		mods = "CTRL",
 		timeout_milliseconds = 2000,
 	}
 
@@ -123,6 +123,8 @@ local function setup_keybindings(config)
 		{ mods = "LEADER", key = "x", action = act.CloseCurrentPane({ confirm = true }) },
 		{ mods = "LEADER", key = "b", action = act.ActivateTabRelative(-1) },
 		{ mods = "LEADER", key = "n", action = act.ActivateTabRelative(1) },
+
+		{ mods = "LEADER", key = "v", action = act.ActivateCopyMode },
 
 		-- Split management
 		{ mods = "LEADER", key = "]", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
@@ -184,11 +186,11 @@ local function setup_keybindings(config)
 	}
 
 	-- Add number-based tab switching
-	for i = 0, 9 do
+	for i = 1, 9 do
 		table.insert(keys, {
 			key = tostring(i),
 			mods = "LEADER",
-			action = act.ActivateTab(i),
+			action = act.ActivateTab(i - 1),
 		})
 	end
 
